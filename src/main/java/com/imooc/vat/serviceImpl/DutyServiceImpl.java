@@ -8,6 +8,7 @@ import com.imooc.vat.entity.Searcher.DutySearcher;
 import com.imooc.vat.entity.Vo.MtDutyVo;
 import com.imooc.vat.entity.Vo.SearchResultVM;
 import com.imooc.vat.service.DutyService;
+import com.imooc.vat.serviceImpl.tool.RunnableExecutorService;
 import com.imooc.vat.util.DateUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,9 @@ public class DutyServiceImpl implements DutyService {
     private MtOvertimeMapper mtOvertimeMapper;
     @Autowired
     private MtVacationMapper mtVacationMapper;
+
+    @Resource
+    private RunnableExecutorService runnableExecutorService;
 
     @Override
     public SearchResultVM<MtDutyVo> getDutyList(DutySearcher searcher) {
