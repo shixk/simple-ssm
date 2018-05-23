@@ -14,7 +14,6 @@ import com.imooc.vat.service.DutyService;
 import com.imooc.vat.service.OverTimeService;
 import com.imooc.vat.service.VacationService;
 import com.imooc.vat.util.DateUtil;
-import com.imooc.vat.util.NotifyTool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -200,7 +199,7 @@ public class DutyController {
         try{
             MtDuty duty=dutyService.getDutyByMisno(misno);
             String message="【加班统计】"+"您的调休发生变动，\r\n加班总数为："+duty.getOverdays()+"天\r\n"+"调休总数："+duty.getVacationdays()+"天\r\n剩余调休为"+duty.getBalancedays()+"天，祝您工作愉快！";
-            NotifyTool.DXAlertMsg(message,misno);
+            System.out.println(message);
         }catch (Exception ex){
             LOG.error("发送大象异常：", ex);
         }
