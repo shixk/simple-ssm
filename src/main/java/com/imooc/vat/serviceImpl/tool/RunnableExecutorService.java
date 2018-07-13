@@ -99,6 +99,7 @@ public class RunnableExecutorService {
         final ScheduledFuture<?> task = scheduleService.scheduleAtFixedRate(() -> consumer.accept(null),
                 startTime, each, TimeUnit.SECONDS);
 
+        //当到达预期最大时间时，开始尝试取消任务。
         scheduleService.schedule(() -> {
             LOG.info("retryTask work :" + retryTimes + "times  then cancel it");
             task.cancel(true);
